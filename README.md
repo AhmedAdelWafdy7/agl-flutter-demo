@@ -80,6 +80,7 @@ $ runqemu kvm serialstdio slirp publicvnc
 The AGL image is running in background, we can use Vinagre to open it. The "AGL Flutter Demo" should be visible inside the AGL interface.
 
 ### 5. Demo
+[Screencast from 03-15-2025 10:23:33 PM.webm](https://github.com/user-attachments/assets/ab91c02b-759f-4ff9-9a11-8fee507e398f)
 
 
 ## Acknowledgments
@@ -89,4 +90,10 @@ The AGL image is running in background, we can use Vinagre to open it. The "AGL 
 - [meta-flutter](https://github.com/meta-flutter)
 
 ## Screenshots
+![remmina_localhost:0_localhost:0_20250315-202258](https://github.com/user-attachments/assets/1595d66f-2323-4e32-8148-d17403f757fd)
+
+
+![remmina_localhost:0_localhost:0_20250315-202304](https://github.com/user-attachments/assets/07aceb9e-c3ed-4064-8290-04f80345b446)
+
+![remmina_localhost:0_localhost:0_20250315-202309](https://github.com/user-attachments/assets/123f67ed-1717-4a09-8b10-99a437d31189)
 
