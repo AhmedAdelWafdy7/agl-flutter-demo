@@ -24,6 +24,64 @@ To build and deploy this application, you will need:
 - Yocto Project tooling
 - AGL salmon branch
 
+
+# AGL Flutter Demo
+
+A Flutter application demo for Automotive Grade Linux (AGL).
+
+## AGL Integration Details
+
+Following steps were taken to integrate this app into AGL image.
+
+### 1. Build AGL locally
+The 'agl-ivi-demo-flutter' of AGL branch was built locally and tested using QEMU.
+
+### 2. Add Yocto recipe for our flutter app
+Under the `recipes-demo` folder I created a new directory named `agl-flutter-demo`. The agl-flutter-demo has `.bb` file containing following recipe:
+
+```
+SUMMARY = "AGL Flutter Demo Application"
+HOMEPAGE = "https://github.com/AhmedAdelWafdy7/agl-flutter-demo"
+LICENSE = "CLOSED"
+SECTION = "graphics"
+PV = "1.0+git${SRCREV}"
+SRC_URI = "git://github.com/AhmedAdelWafdy7/agl-flutter-demo.git;protocol=https;branch=main"
+SRCREV = "${AUTOREV}"
+S = "${WORKDIR}/git"
+
+inherit flutter-app agl-app
+
+PUBSPEC_APPNAME = "agl_flutter_demo"
+PUBSPEC_IGNORE_LOCKFILE = "1"
+FLUTTER_APPLICATION_INSTALL_PREFIX = "/usr/share/flutter"
+AGL_APP_TEMPLATE = "agl-app-flutter"
+AGL_APP_NAME = "AGL Flutter Demo"
+AGL_APP_ID = "agl_flutter_demo"
+```
+
+### 3. Build the image again
+In order for our changes to be reflected we need to re-build the updated recipes and then build the entire image again. Following commands will achieve this:
+
+```
+$ source agl-init-build-env
+$ bitbake agl-flutter-demo
+$ bitbake agl-ivi-demo-flutter
+```
+
+This will take a couple of minutes depending upon system speed.
+
+### 4. Running our image using qemu
+Now it's time to see if our newly added app works as intended or not. We'll run the following command to boot the image:
+
+```
+$ runqemu kvm serialstdio slirp publicvnc
+```
+
+The AGL image is running in background, we can use Vinagre to open it. The "AGL Flutter Demo" should be visible inside the AGL interface.
+
+### 5. Demo
+
+
 ## Acknowledgments
 
 - [Automotive Grade Linux (AGL)](https://www.automotivelinux.org/)
@@ -32,4 +90,3 @@ To build and deploy this application, you will need:
 
 ## Screenshots
 
-*Add screenshots of your application running on AGL here*
